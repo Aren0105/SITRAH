@@ -1,6 +1,7 @@
 package Menu_Principal;
 
 import Dashboard.FrmDashboard;
+import Login.FrmLogin;
 import iconos.IconosCargador;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -20,7 +21,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         EstilodeTabla edt = new EstilodeTabla();
         edt.aplicar(tblPacientes);
         iconos.IconosCargador ic = new IconosCargador();
-        ic.cargar(lblHospital, lblCasa, lblPaciente, lblReporte, lblSalir, lblRegistroPaciente, lblPacientes, lblNombre, lblDNI, lblApellido, lblEdad, lblSexo, lblTelefono, lblMotivo, lblPrioridad, lblBuscar, lblEditar, lblEliminar, lblRegistrar, lblFecha);
+        ic.cargar(lblHospital, lblCasa, lblPaciente, lblReporte, lblSalir, lblRegistroPaciente, lblPacientes, lblNombre, lblDNI, lblApellido, lblEdad, lblSexo, lblTelefono, lblMotivo, lblPrioridad, lblEditar, lblEliminar, lblRegistrar, lblFecha,lblDashboard);
         dtm = (DefaultTableModel) tblPacientes.getModel();
 
         txtNombre.setText("Ingrese nombre");
@@ -29,7 +30,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         txtEdad.setText("Ingrese su edad");
         txtTelefono.setText("Ingrese telefono");
         txtMotivo.setText("Motivo de consulta");
-        txtBuscar.setText("Buscar paciente...");
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -66,8 +67,6 @@ public class Frm_Menu extends javax.swing.JFrame {
         cbmPrioridad = new javax.swing.JComboBox<>();
         jLabel31 = new javax.swing.JLabel();
         lblPacientes = new javax.swing.JLabel();
-        txtBuscar = new javax.swing.JTextField();
-        lblBuscar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPacientes = new javax.swing.JTable();
         jLabel34 = new javax.swing.JLabel();
@@ -85,7 +84,6 @@ public class Frm_Menu extends javax.swing.JFrame {
         btnDashboard = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblDashboard = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -242,28 +240,6 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel31.setForeground(new java.awt.Color(10, 61, 74));
         jLabel31.setText("LISTA DE PACIENTES: ");
 
-        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        txtBuscar.setForeground(new java.awt.Color(154, 188, 200));
-        txtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        txtBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtBuscarFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtBuscarFocusLost(evt);
-            }
-        });
-        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarActionPerformed(evt);
-            }
-        });
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyReleased(evt);
-            }
-        });
-
         tblPacientes.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         tblPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -329,7 +305,7 @@ public class Frm_Menu extends javax.swing.JFrame {
             }
         });
         btnEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        btnEliminar.add(lblEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 30));
+        btnEliminar.add(lblEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 40));
 
         jLabel26.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(238, 245, 247));
@@ -383,9 +359,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(238, 245, 247));
         jLabel1.setText("Dashboard");
         btnDashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 80, 20));
-        btnDashboard.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
-
-        jLabel5.setText("Verificacion de cambio");
+        btnDashboard.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 40));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -407,9 +381,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
                                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(61, 61, 61)
-                                .addComponent(jLabel5)
-                                .addGap(42, 42, 42)
+                                .addGap(221, 221, 221)
                                 .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(44, 44, 44))
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,11 +392,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                                     .addGap(252, 252, 252)
                                     .addComponent(lblPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(12, 12, 12)
-                                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(36, 36, 36)
-                                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(6, 6, 6)
-                                    .addComponent(lblBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -540,34 +508,25 @@ public class Frm_Menu extends javax.swing.JFrame {
                         .addComponent(jLabel29)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGap(4, 4, 4)
-                                    .addComponent(jLabel31)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(lblPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)))
-                        .addGap(17, 17, 17)
+                                .addGap(73, 73, 73)
+                                .addComponent(jLabel31))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(lblPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(cbmPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel5)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -595,6 +554,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         lblInicio.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblInicio.setForeground(new java.awt.Color(238, 245, 247));
         lblInicio.setText("Inicio");
+        lblInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblInicioMouseClicked(evt);
@@ -604,6 +564,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(238, 245, 247));
         jLabel6.setText("Pacientes");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -613,10 +574,12 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(238, 245, 247));
         jLabel7.setText("Reporte");
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblSalirMenu.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblSalirMenu.setForeground(new java.awt.Color(238, 245, 247));
         lblSalirMenu.setText("Salir");
+        lblSalirMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblSalirMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSalirMenuMouseClicked(evt);
@@ -931,7 +894,7 @@ public class Frm_Menu extends javax.swing.JFrame {
 
     private void lblInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseClicked
 
-        new Frm_Menu().setVisible(true);
+        new FrmLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblInicioMouseClicked
 
@@ -1027,27 +990,6 @@ public class Frm_Menu extends javax.swing.JFrame {
             txtMotivo.setText("Motivo de consulta");
         }
     }//GEN-LAST:event_txtMotivoFocusLost
-
-    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
-
-    }//GEN-LAST:event_txtBuscarKeyReleased
-
-    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-
-    }//GEN-LAST:event_txtBuscarActionPerformed
-
-    private void txtBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusGained
-
-        if (txtBuscar.getText().equals("Buscar paciente...")) {
-            txtBuscar.setText("");
-        }
-    }//GEN-LAST:event_txtBuscarFocusGained
-
-    private void txtBuscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusLost
-        if (txtBuscar.getText().trim().isEmpty()) {
-            txtBuscar.setText("Buscar paciente...");
-        }
-    }//GEN-LAST:event_txtBuscarFocusLost
 
     private void tblPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacientesMouseClicked
         int fila = tblPacientes.getSelectedRow();
@@ -1226,7 +1168,6 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
@@ -1237,7 +1178,6 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblApellido;
-    private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblCasa;
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JLabel lblDNI;
@@ -1263,7 +1203,6 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JTable tblPacientes;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtMotivo;

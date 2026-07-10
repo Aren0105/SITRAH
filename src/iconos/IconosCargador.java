@@ -22,11 +22,11 @@ public class IconosCargador {
             JLabel lblTelefono,
             JLabel lblMotivo,
             JLabel lblPrioridad,
-            JLabel lblBuscar,
             JLabel lblEditar,
             JLabel lblEliminar,
             JLabel lblRegistrar,
-            JLabel lblFecha                
+            JLabel lblFecha,
+            JLabel lblDashboard
             ) {
         lblHospital.setIcon(Iconos.cargar("iconos/hospital-building.svg", 60,60));
         lblCasa.setIcon(Iconos.cargar("iconos/home-circle.svg"));
@@ -42,11 +42,11 @@ public class IconosCargador {
         lblTelefono.setIcon(new FlatSVGIcon("iconos/phone.svg",22,22));
         lblMotivo.setIcon(new FlatSVGIcon("iconos/message.svg",22,22));
         lblPrioridad.setIcon(new FlatSVGIcon("iconos/flag.svg",22,22));
-        lblBuscar.setIcon(new FlatSVGIcon("iconos/magnify.svg",22,22));
         lblEditar.setIcon(Iconos.cargar("iconos/pencil.svg",22,22));
         lblEliminar.setIcon(Iconos.cargar("iconos/trash-can-outline.svg",22,22));
         lblRegistrar.setIcon(Iconos.cargar("iconos/registered-trademark.svg",22,22));
         lblFecha.setIcon(new FlatSVGIcon("iconos/calendar-month.svg",22,22));
+        lblDashboard.setIcon(Iconos.cargar("iconos/view-dashboard-edit-outline.svg",22,22));
         
     }
 }
