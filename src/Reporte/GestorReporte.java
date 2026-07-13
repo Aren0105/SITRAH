@@ -2,12 +2,14 @@ package Reporte;
 
 import Dashboard.ColaPrioridad;
 import Dashboard.NodoCola;
+import Menu_Principal.ListaEnlazada;
 import Menu_Principal.Nodo;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
@@ -22,32 +24,22 @@ import java.time.LocalDate;
 
 public class GestorReporte {
 
-    public static Nodo buscarPorDni(ColaPrioridad cola, String dni) {
-        if (cola == null || dni == null || dni.isEmpty()) {
+    public static Nodo buscarPorDni(ListaEnlazada lista, String dni) {
+
+        if (lista == null || dni == null || dni.isEmpty()) {
             return null;
         }
 
-        NodoCola actual = cola.getInicioEmergencia();
-        while (actual != null) {
-            if (actual.getPaciente() != null && actual.getPaciente().getDni().equals(dni)) {
-                return actual.getPaciente();
-            }
-            actual = actual.getSiguiente();
-        }
+        Nodo actual = lista.getCabeza();
 
-        actual = cola.getInicioUrgente();
         while (actual != null) {
-            if (actual.getPaciente() != null && actual.getPaciente().getDni().equals(dni)) {
-                return actual.getPaciente();
-            }
-            actual = actual.getSiguiente();
-        }
 
-        actual = cola.getInicioLeve();
-        while (actual != null) {
-            if (actual.getPaciente() != null && actual.getPaciente().getDni().equals(dni)) {
-                return actual.getPaciente();
+            if (actual.getDni().equalsIgnoreCase(dni)
+                    && actual.getEstado().equalsIgnoreCase("Atendido")) {
+
+                return actual;
             }
+
             actual = actual.getSiguiente();
         }
 
@@ -66,6 +58,27 @@ public class GestorReporte {
             Font subtitulo = FontFactory.getFont(FontFactory.TIMES_BOLD, 13);
             Font normal = FontFactory.getFont(FontFactory.TIMES, 12);
             Font negrita = FontFactory.getFont(FontFactory.TIMES_BOLD, 12);
+            Font nombreSistema = FontFactory.getFont(FontFactory.TIMES_BOLD, 22);
+            Font descripcion = FontFactory.getFont( FontFactory.TIMES_ITALIC, 11);
+            Font lineaTitulo = FontFactory.getFont( FontFactory.TIMES_BOLD, 16 );
+
+            // Nombre grande
+            Paragraph sitrah = new Paragraph("SITRAH", nombreSistema);
+            sitrah.setAlignment(Element.ALIGN_CENTER);
+            documento.add(sitrah);
+
+            // Descripción
+            Paragraph subtituloSistema = new Paragraph(
+                    "Sistema Integrado de Triaje Hospitalario",
+                    descripcion
+            );
+
+            subtituloSistema.setAlignment(Element.ALIGN_CENTER);
+            documento.add(subtituloSistema);
+
+            documento.add(new Paragraph(" "));
+            documento.add(new LineSeparator());
+            documento.add(new Paragraph(" "));
 
             //titulo
             Paragraph pTitulo = new Paragraph("INFORME DE TRIAJE", titulo);

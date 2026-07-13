@@ -143,5 +143,52 @@ public class ListaEnlazada {
 
         return false;
     }
+    
+    
+    /*ESTADISTICAS*/
+    public int totalEmergencia() {
+
+        int num = 0;
+
+        Nodo actual = cabeza;
+
+        while (actual != null) {
+            if (actual.getPrioridad().equals("Emergencia")) {
+                num += 1;
+            }
+            actual = actual.getSiguiente();
+        }
+
+        return num;
+    }
+
+    public int totalUrgente() {
+
+        int num = 0;
+
+        Nodo actual = cabeza;
+
+        while (actual != null) {
+            if (actual.getPrioridad().equals("Urgencia")) {
+                num += 1;
+            }
+            actual = actual.getSiguiente();
+        }
+        return num;
+    }
+
+    public int totalLeve() {
+
+        int num = 0;
+
+        Nodo actual = cabeza;
+        while (actual != null) {
+            if (actual.getPrioridad().equals("Leve")) {
+                num += 1;
+            }
+            actual = actual.getSiguiente();
+        }
+        return num;
+    }
 
 }

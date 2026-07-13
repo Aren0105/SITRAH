@@ -1,4 +1,3 @@
-
 package Dashboard;
 
 import Login.FrmLogin;
@@ -11,6 +10,8 @@ import Reporte.Frm_Reporte;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import iconos.Iconos;
 import iconos.IconosCargador;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,6 +20,7 @@ public class FrmDashboard extends javax.swing.JFrame {
     ListaEnlazada lista;
     ColaPrioridad cola;
     PilaHistorial historial;
+
     public FrmDashboard() {
         initComponents();
         iconos.IconosCargador ic = new IconosCargador();
@@ -27,14 +29,14 @@ public class FrmDashboard extends javax.swing.JFrame {
         lblReloj.setIcon(new FlatSVGIcon("iconos/clock-time-four-outline.svg", 60, 60));
         lblAtencion.setIcon(new FlatSVGIcon("iconos/check-circle-outline.svg", 60, 60));
         lblAlerta.setIcon(new FlatSVGIcon("iconos/alert-outline.svg", 60, 60));
-        lblHospital.setIcon(Iconos.cargar("iconos/hospital-building.svg", 60,60));
+        lblHospital.setIcon(Iconos.cargar("iconos/hospital-building.svg", 60, 60));
         lblInicio.setIcon(Iconos.cargar("iconos/home-circle.svg"));
         lblPacien.setIcon(Iconos.cargar("iconos/account.svg"));
         lblReporte.setIcon(Iconos.cargar("iconos/file-chart.svg"));
-        lblSalir.setIcon(Iconos.cargar("iconos/exit-to-app.svg")); 
+        lblSalir.setIcon(Iconos.cargar("iconos/exit-to-app.svg"));
         lblAtender.setIcon(Iconos.cargar("iconos/check-circle-outline.svg"));
         lblVolverRegistro.setIcon(Iconos.cargar("iconos/arrow-left-circle.svg"));
-        
+
         lista = DatosSistema.lista;
         cola = DatosSistema.cola;
         historial = DatosSistema.historial;
@@ -47,7 +49,6 @@ public class FrmDashboard extends javax.swing.JFrame {
         edt.aplicar(tblHistorial);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -494,27 +495,28 @@ public class FrmDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
-      
+
         setState(FrmDashboard.ICONIFIED);
     }//GEN-LAST:event_lblMinimizarMouseClicked
 
     private void lblCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarMouseClicked
-        
+
         dispose();
     }//GEN-LAST:event_lblCerrarMouseClicked
 
     private void btnAtenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtenderMouseClicked
-        
-         Nodo paciente = cola.atender();
+
+        Nodo paciente = cola.atender();
         if (paciente == null) {
             JOptionPane.showMessageDialog(this, "No hay pacientes en espera");
             return;
         }
         paciente.setEstado("Atendido");
+        
 
         historial.push(
-                java.time.LocalTime.now()
-                        .format(java.time.format.DateTimeFormatter.ofPattern("HH:mm:ss"))
+                LocalTime.now()
+                        .format(DateTimeFormatter.ofPattern("HH:mm:ss"))
                 + " | Atendido: "
                 + paciente.getCodigoPaciente()
                 + " - "
@@ -532,7 +534,7 @@ public class FrmDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtenderMouseClicked
 
     private void btnRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseClicked
-        
+
         Frm_Menu menu = new Frm_Menu();
         menu.setVisible(true);
 
@@ -540,7 +542,7 @@ public class FrmDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroMouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        
+
         new FrmLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
@@ -548,17 +550,17 @@ public class FrmDashboard extends javax.swing.JFrame {
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
         new Frm_Menu().setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_jLabel15MouseClicked
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
-        
+
         dispose();
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        
-        new Frm_Reporte().setVisible(true);
+
+        new Frm_Reporte(lista, historial).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel16MouseClicked
 

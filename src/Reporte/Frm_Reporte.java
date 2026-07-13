@@ -1,8 +1,10 @@
 package Reporte;
 
+import Dashboard.PilaHistorial;
 import Login.FrmLogin;
-import static Menu_Principal.DatosSistema.cola;
+import Menu_Principal.DatosSistema;
 import Menu_Principal.Frm_Menu;
+import Menu_Principal.ListaEnlazada;
 import Menu_Principal.Nodo;
 import iconos.Iconos;
 import java.time.LocalDate;
@@ -11,18 +13,49 @@ import javax.swing.JOptionPane;
 
 public class Frm_Reporte extends javax.swing.JFrame {
 
+    private ListaEnlazada lista;
+    private PilaHistorial historial;
+
     public Frm_Reporte() {
         initComponents();
         setLocationRelativeTo(null);
-        lblBuscar.setIcon(Iconos.cargarOriginal("iconos/search-web.svg", 22,22));
+
+        txtDniBuscar.setEditable(true);
+        setLocationRelativeTo(null);
+        lblBuscar.setIcon(Iconos.cargarOriginal("iconos/search-web.svg", 22, 22));
         lblLogoPaciente.setIcon(Iconos.cargarOriginal("iconos/account.svg", 25, 25));
-        lblLogo.setIcon(Iconos.cargar("iconos/hospital-building.svg", 70,70));
-        lblInicio.setIcon(Iconos.cargar("iconos/home-circle.svg",32,32));
-        lblPacientes.setIcon(Iconos.cargar("iconos/account.svg",32,32));
-        lblReporte.setIcon(Iconos.cargar("iconos/file-chart.svg",32,32));
-        lblSalir.setIcon(Iconos.cargar("iconos/exit-to-app.svg",32,32));
+        lblLogo.setIcon(Iconos.cargar("iconos/hospital-building.svg", 70, 70));
+        lblInicio.setIcon(Iconos.cargar("iconos/home-circle.svg", 32, 32));
+        lblPacientes.setIcon(Iconos.cargar("iconos/account.svg", 32, 32));
+        lblReporte.setIcon(Iconos.cargar("iconos/file-chart.svg", 32, 32));
+        lblSalir.setIcon(Iconos.cargar("iconos/exit-to-app.svg", 32, 32));
+
+        this.lista = DatosSistema.lista;
+        this.historial = DatosSistema.historial;
     }
 
+    public Frm_Reporte(ListaEnlazada lista, PilaHistorial historial) {
+        this();
+
+        this.lista = lista;
+        this.historial = historial;
+    }
+    
+    public Frm_Reporte(ListaEnlazada lista, PilaHistorial historial, boolean usuario) {
+
+    this(lista, historial);
+
+    if(usuario){
+
+        
+        lblInicio.setVisible(false);
+        lblMandarInicio.setVisible(false);
+
+        lblPacientes.setVisible(false);
+        lblMnadaraMenu.setVisible(false);
+
+    }
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -68,7 +101,6 @@ public class Frm_Reporte extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(245, 247, 250));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1110, 612));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(245, 247, 250));
@@ -173,19 +205,15 @@ public class Frm_Reporte extends javax.swing.JFrame {
                                 .addGap(24, 24, 24)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                            .addComponent(lblPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                        .addComponent(lblPacientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addComponent(lblInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(14, 14, 14)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(lblReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                                    .addComponent(lblReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(lblSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addComponent(lblSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblMandarInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblMnadaraMenu)
@@ -239,8 +267,8 @@ public class Frm_Reporte extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14)
@@ -426,7 +454,19 @@ public class Frm_Reporte extends javax.swing.JFrame {
             return;
         }
 
-        Menu_Principal.Nodo paciente = Reporte.GestorReporte.buscarPorDni(cola, dniBuscado);
+        Nodo paciente = Reporte.GestorReporte.buscarPorDni(lista, dniBuscado);
+
+        if (paciente != null && !paciente.getEstado().equals("Atendido")) {
+
+            JOptionPane.showMessageDialog(this,
+                    "El paciente todavía no ha sido atendido.",
+                    "Reporte no disponible",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            txtVisorReporte.setText("");
+            btnExportarPdf.setEnabled(false);
+            return;
+        }
 
         if (paciente != null) {
             String reporteFormateado
@@ -436,6 +476,7 @@ public class Frm_Reporte extends javax.swing.JFrame {
                     + "EDAD                : " + paciente.getEdad() + " años\n"
                     + "SEXO                : " + paciente.getSexo() + "\n"
                     + "TELÉFONO            : " + paciente.getTelefono() + "\n"
+                    + "ESTADO             : " + paciente.getEstado() + "\n"
                     + "FECHA DE ATENCIÓN   : " + LocalDate.now() + "\n"
                     + "\n------------------------------------------------------------\n\n"
                     + "MOTIVO DE CONSULTA\n\n"
@@ -473,7 +514,15 @@ public class Frm_Reporte extends javax.swing.JFrame {
 
             String dni = txtDniBuscar.getText().trim();
 
-            Nodo paciente = Reporte.GestorReporte.buscarPorDni(cola, dni);
+            Nodo paciente = Reporte.GestorReporte.buscarPorDni(lista, dni);
+
+            if (paciente != null && !paciente.getEstado().equals("Atendido")) {
+
+                JOptionPane.showMessageDialog(this,
+                        "El paciente aún no ha sido atendido.");
+
+                return;
+            }
 
             if (paciente == null) {
                 JOptionPane.showMessageDialog(this, "No existe el paciente.");
@@ -502,24 +551,24 @@ public class Frm_Reporte extends javax.swing.JFrame {
 
     private void lblCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarMouseClicked
         dispose();
-       
-        
+
+
     }//GEN-LAST:event_lblCerrarMouseClicked
 
     private void lblMandarInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMandarInicioMouseClicked
         new FrmLogin().setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_lblMandarInicioMouseClicked
 
     private void lblMnadaraMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMnadaraMenuMouseClicked
-        
+
         new Frm_Menu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lblMnadaraMenuMouseClicked
 
     private void lblCerrarSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSalirMouseClicked
-        
+
         dispose();
     }//GEN-LAST:event_lblCerrarSalirMouseClicked
 

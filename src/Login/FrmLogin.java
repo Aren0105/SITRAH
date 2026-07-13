@@ -1,28 +1,25 @@
-
 package Login;
 
+import Menu_Principal.DatosSistema;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Menu_Principal.Frm_Menu;
+import Reporte.Frm_Reporte;
 import iconos.Iconos;
-
 
 
 public class FrmLogin extends javax.swing.JFrame {
 
-   
     public FrmLogin() {
         initComponents();
-        lblHospi.setIcon(Iconos.cargar("iconos/hospital-building.svg", 70,70));
+        lblHospi.setIcon(Iconos.cargar("iconos/hospital-building.svg", 70, 70));
         setLocationRelativeTo(null);
         btnIngresar.setFocusPainted(false);
-        btnRegistrarse.setFocusPainted(false);
         txtUsuario.setText("ej.DoctorMartinez@gmail.com");
         txtContraseña.setText("••••••••••");
-      
+
     }
-    
-   
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -44,7 +41,6 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         btnIngresar = new javax.swing.JButton();
-        btnRegistrarse = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -183,13 +179,6 @@ public class FrmLogin extends javax.swing.JFrame {
         });
         jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(522, 370, 326, 43));
 
-        btnRegistrarse.setBackground(new java.awt.Color(10, 61, 74));
-        btnRegistrarse.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        btnRegistrarse.setForeground(new java.awt.Color(238, 245, 247));
-        btnRegistrarse.setText("Registrarse");
-        btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(522, 451, 326, 43));
-
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(122, 154, 168));
         jLabel1.setText("Ingrese sus credenciales para acceder al");
@@ -325,34 +314,50 @@ public class FrmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-       
+
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void lblCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarMouseClicked
-         dispose();
-        
+        dispose();
+
     }//GEN-LAST:event_lblCerrarMouseClicked
 
     private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
-        
+
         setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_lblMinimizarMouseClicked
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        
+
         String usuariox = txtUsuario.getText();
         String contraseñax = String.valueOf(txtContraseña.getPassword());
 
-        if (Autenticacion.validar(usuariox, contraseñax)) {
+        String rol = Autenticacion.validar(usuariox, contraseñax);
+
+        if (rol.equals("ADMIN")) {
+
             new Frm_Menu().setVisible(true);
             this.dispose();
+
+        } else if (rol.equals("USUARIO")) {
+            new Frm_Reporte(
+                    DatosSistema.lista,
+                    DatosSistema.historial,
+                    true
+            ).setVisible(true);
+
+            this.dispose();
+
         } else {
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+
+            JOptionPane.showMessageDialog(this,
+                    "Usuario o contraseña incorrectos");
+
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void chkMostrarContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostrarContraActionPerformed
-        
+
         if (chkMostrarContra.isSelected()) {
             txtContraseña.setEchoChar((char) 0);
         } else {
@@ -361,14 +366,14 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_chkMostrarContraActionPerformed
 
     private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
-        
+
         if (txtUsuario.getText().equals("ej.DoctorMartinez@gmail.com")) {
             txtUsuario.setText("");
         }
     }//GEN-LAST:event_txtUsuarioFocusGained
 
     private void txtUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusLost
-        if (txtUsuario.getText().trim().isEmpty() ){
+        if (txtUsuario.getText().trim().isEmpty()) {
             txtUsuario.setText("ej.DoctorMartinez@gmail.com");
         }
     }//GEN-LAST:event_txtUsuarioFocusLost
@@ -380,7 +385,7 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContraseñaFocusGained
 
     private void txtContraseñaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraseñaFocusLost
-        if (txtContraseña.getText().trim().isEmpty() ){
+        if (txtContraseña.getText().trim().isEmpty()) {
             txtContraseña.setText("••••••••••");
         }
     }//GEN-LAST:event_txtContraseñaFocusLost
@@ -423,7 +428,6 @@ public class FrmLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel_superior;
     private javax.swing.JButton btnIngresar;
-    private javax.swing.JButton btnRegistrarse;
     private javax.swing.JCheckBox chkMostrarContra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

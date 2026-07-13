@@ -1,5 +1,7 @@
 package Dashboard;
 
+import Menu_Principal.Nodo;
+
 public class PilaHistorial {
 
     private NodoPila cima;
@@ -53,6 +55,7 @@ public class PilaHistorial {
     public void actualizarPaciente(String codigo, String nombre, String apellido, String prioridad) {
 
         NodoPila actual = cima;
+
         while (actual != null) {
             if (actual.accion.contains(codigo)) {
                 String[] partes = actual.accion.split("\\|");
@@ -67,6 +70,7 @@ public class PilaHistorial {
                         + prioridad
                         + "]";
             }
+
             actual = actual.siguiente;
         }
     }

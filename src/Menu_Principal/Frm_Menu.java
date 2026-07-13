@@ -1,6 +1,7 @@
 package Menu_Principal;
 
 import Dashboard.FrmDashboard;
+import Estadisticas.FrmEstadisticas;
 import Login.FrmLogin;
 import iconos.IconosCargador;
 import java.time.LocalDate;
@@ -21,16 +22,16 @@ public class Frm_Menu extends javax.swing.JFrame {
         EstilodeTabla edt = new EstilodeTabla();
         edt.aplicar(tblPacientes);
         iconos.IconosCargador ic = new IconosCargador();
-        ic.cargar(lblHospital, lblCasa, lblPaciente, lblReporte, lblSalir, lblRegistroPaciente, lblPacientes, lblNombre, lblDNI, lblApellido, lblEdad, lblSexo, lblTelefono, lblMotivo, lblPrioridad, lblEditar, lblEliminar, lblRegistrar, lblFecha,lblDashboard);
+        ic.cargar(lblHospital, lblCasa, lblPaciente, lblReporte, lblSalir, lblRegistroPaciente, lblPacientes, lblNombre, lblDNI, lblApellido, lblEdad, lblSexo, lblTelefono, lblMotivo, lblPrioridad, lblEditar, lblEliminar, lblRegistrar, lblFecha, lblDashboard);
         dtm = (DefaultTableModel) tblPacientes.getModel();
-
+        cargarTablaPacientes();
         txtNombre.setText("Ingrese nombre");
         txtApellido.setText("Ingrese apellido");
         txtDNI.setText("Ingrese DNI");
         txtEdad.setText("Ingrese su edad");
         txtTelefono.setText("Ingrese telefono");
         txtMotivo.setText("Motivo de consulta");
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -84,6 +85,9 @@ public class Frm_Menu extends javax.swing.JFrame {
         btnDashboard = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblDashboard = new javax.swing.JLabel();
+        btnEstadisticas = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -361,6 +365,32 @@ public class Frm_Menu extends javax.swing.JFrame {
         btnDashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 80, 20));
         btnDashboard.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 40));
 
+        btnEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEstadisticasMouseClicked(evt);
+            }
+        });
+
+        jLabel5.setText("Estadisticas");
+
+        jLabel8.setText("Log");
+
+        javax.swing.GroupLayout btnEstadisticasLayout = new javax.swing.GroupLayout(btnEstadisticas);
+        btnEstadisticas.setLayout(btnEstadisticasLayout);
+        btnEstadisticasLayout.setHorizontalGroup(
+            btnEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEstadisticasLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btnEstadisticasLayout.setVerticalGroup(
+            btnEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -375,15 +405,6 @@ public class Frm_Menu extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(221, 221, 221)
-                                .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44))
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addComponent(lblRegistroPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -446,7 +467,20 @@ public class Frm_Menu extends javax.swing.JFrame {
                                                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addGap(62, 62, 62)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(71, 71, 71)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(btnEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(44, 44, 44)))))))
                 .addGap(0, 25, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -508,13 +542,10 @@ public class Frm_Menu extends javax.swing.JFrame {
                         .addComponent(jLabel29)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addComponent(jLabel31))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addComponent(lblPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblPacientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -523,6 +554,7 @@ public class Frm_Menu extends javax.swing.JFrame {
                     .addComponent(lblPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnEstadisticas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
@@ -575,6 +607,11 @@ public class Frm_Menu extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(238, 245, 247));
         jLabel7.setText("Reporte");
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         lblSalirMenu.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblSalirMenu.setForeground(new java.awt.Color(238, 245, 247));
@@ -870,6 +907,7 @@ public class Frm_Menu extends javax.swing.JFrame {
         DatosSistema.cola.encolar(paciente);
 
         DatosSistema.historial.push(
+                
                 paciente.getHoraIngreso()
                 + " | Registrado: "
                 + paciente.getCodigoPaciente()
@@ -892,6 +930,27 @@ public class Frm_Menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAgregarMouseClicked
 
+    private void cargarTablaPacientes() {
+
+        dtm.setRowCount(0);
+
+        Nodo actual = DatosSistema.lista.getCabeza();
+
+        while (actual != null) {
+
+            dtm.addRow(new Object[]{
+                actual.getNombre(),
+                actual.getDni(),
+                actual.getEdad(),
+                actual.getSexo(),
+                actual.getPrioridad(),
+                actual.getFechaIngreso()
+            });
+
+            actual = actual.getSiguiente();
+        }
+    }
+    
     private void lblInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseClicked
 
         new FrmLogin().setVisible(true);
@@ -1104,6 +1163,16 @@ public class Frm_Menu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
+    private void btnEstadisticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstadisticasMouseClicked
+       
+        new FrmEstadisticas().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEstadisticasMouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1141,6 +1210,7 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JPanel btnDashboard;
     private javax.swing.JPanel btnEditar;
     private javax.swing.JPanel btnEliminar;
+    private javax.swing.JPanel btnEstadisticas;
     private javax.swing.JComboBox<String> cbmPrioridad;
     private javax.swing.JComboBox<String> cbmSexo;
     private javax.swing.JLabel jLabel1;
@@ -1168,8 +1238,10 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

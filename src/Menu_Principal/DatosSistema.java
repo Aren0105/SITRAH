@@ -1,6 +1,7 @@
-
 package Menu_Principal;
+
 import Dashboard.ColaPrioridad;
+
 import Dashboard.PilaHistorial;
 
 public class DatosSistema {

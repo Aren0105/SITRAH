@@ -1,9 +1,10 @@
-
 package Dashboard;
 
+import Menu_Principal.Nodo;
 
 public class NodoPila {
-    String accion;
+
+ String accion;
     NodoPila siguiente;
 
     public NodoPila(String accion) {
