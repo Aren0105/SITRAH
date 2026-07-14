@@ -512,7 +512,6 @@ public class FrmDashboard extends javax.swing.JFrame {
             return;
         }
         paciente.setEstado("Atendido");
-        
 
         historial.push(
                 LocalTime.now()
@@ -555,7 +554,9 @@ public class FrmDashboard extends javax.swing.JFrame {
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
 
-        dispose();
+        FrmLogin login = new FrmLogin();
+        login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked

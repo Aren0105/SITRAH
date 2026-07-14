@@ -1,10 +1,8 @@
 package Estadisticas;
 
-
-
-
 import Dashboard.FrmDashboard;
 import Dashboard.NodoPila;
+import Login.FrmLogin;
 import Menu_Principal.DatosSistema;
 import Menu_Principal.Frm_Menu;
 import javax.swing.table.DefaultTableModel;
@@ -20,7 +18,7 @@ public class FrmEstadisticas extends javax.swing.JFrame {
      */
     public FrmEstadisticas() {
         initComponents();
-        
+
         setLocationRelativeTo(null);
         actualizarContadores();
         actualizarDistribucion();
@@ -44,7 +42,7 @@ public class FrmEstadisticas extends javax.swing.JFrame {
 
         int bloques = porcentaje / 5;
 
-        for (int i = 0; i < bloques; i+=1) {
+        for (int i = 0; i < bloques; i += 1) {
             sb.append("█");
         }
         return sb.toString();
@@ -103,7 +101,7 @@ public class FrmEstadisticas extends javax.swing.JFrame {
 
     private void actualizarUltimosAtendidos() {
 
-        DefaultTableModel modelo= (DefaultTableModel) tableUltimos.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tableUltimos.getModel();
 
         modelo.setRowCount(0);
 
@@ -124,14 +122,11 @@ public class FrmEstadisticas extends javax.swing.JFrame {
                     partes[1].trim()
                 });
 
-                contador+=1;
+                contador += 1;
             }
             actual = actual.getSiguiente();
         }
     }
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -384,6 +379,11 @@ public class FrmEstadisticas extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(238, 245, 247));
         jLabel18.setText("Salir");
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("SansSerif", 2, 13)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(238, 245, 247));
@@ -545,14 +545,21 @@ public class FrmEstadisticas extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel26MouseClicked
 
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
-         setState(FrmEstadisticas.ICONIFIED);
+        setState(FrmEstadisticas.ICONIFIED);
     }//GEN-LAST:event_jLabel25MouseClicked
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        
-         new Frm_Menu().setVisible(true);
+
+        new Frm_Menu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+
+        FrmLogin login = new FrmLogin();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel18MouseClicked
 
     /**
      * @param args the command line arguments

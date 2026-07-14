@@ -40,22 +40,22 @@ public class Frm_Reporte extends javax.swing.JFrame {
         this.lista = lista;
         this.historial = historial;
     }
-    
+
     public Frm_Reporte(ListaEnlazada lista, PilaHistorial historial, boolean usuario) {
 
-    this(lista, historial);
+        this(lista, historial);
 
-    if(usuario){
+        if (usuario) {
 
-        
-        lblInicio.setVisible(false);
-        lblMandarInicio.setVisible(false);
+            lblInicio.setVisible(false);
+            lblMandarInicio.setVisible(false);
 
-        lblPacientes.setVisible(false);
-        lblMnadaraMenu.setVisible(false);
+            lblPacientes.setVisible(false);
+            lblMnadaraMenu.setVisible(false);
 
+        }
     }
-}
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -569,7 +569,9 @@ public class Frm_Reporte extends javax.swing.JFrame {
 
     private void lblCerrarSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSalirMouseClicked
 
-        dispose();
+        FrmLogin login = new FrmLogin();
+        login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_lblCerrarSalirMouseClicked
 
     /**

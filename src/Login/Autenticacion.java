@@ -8,6 +8,7 @@ public class Autenticacion {
     //el static indica que pertenece a la clase y no a un 
     //objeto por eso en el jframe se puede llamar como
     //Autenticacion.validar
+    
      private static Usuario[] usuarios = {
         new Usuario("admin", "12345678", "ADMIN"),
         new Usuario("usuario", "12345678", "USUARIO")

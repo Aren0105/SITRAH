@@ -958,7 +958,9 @@ public class Frm_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_lblInicioMouseClicked
 
     private void lblSalirMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalirMenuMouseClicked
-        dispose();
+       FrmLogin login = new FrmLogin();
+       login.setVisible(true);
+       this.dispose();
 
     }//GEN-LAST:event_lblSalirMenuMouseClicked
 
