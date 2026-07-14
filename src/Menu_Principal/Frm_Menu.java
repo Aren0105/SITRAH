@@ -87,7 +87,6 @@ public class Frm_Menu extends javax.swing.JFrame {
         lblDashboard = new javax.swing.JLabel();
         btnEstadisticas = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -365,30 +364,28 @@ public class Frm_Menu extends javax.swing.JFrame {
         btnDashboard.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 80, 20));
         btnDashboard.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 40));
 
+        btnEstadisticas.setBackground(new java.awt.Color(255, 153, 102));
         btnEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEstadisticasMouseClicked(evt);
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(238, 245, 247));
         jLabel5.setText("Estadisticas");
-
-        jLabel8.setText("Log");
 
         javax.swing.GroupLayout btnEstadisticasLayout = new javax.swing.GroupLayout(btnEstadisticas);
         btnEstadisticas.setLayout(btnEstadisticasLayout);
         btnEstadisticasLayout.setHorizontalGroup(
             btnEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEstadisticasLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 32, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnEstadisticasLayout.setVerticalGroup(
             btnEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -1243,7 +1240,6 @@ public class Frm_Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

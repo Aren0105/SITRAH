@@ -1,15 +1,11 @@
 package Reporte;
 
-import Dashboard.ColaPrioridad;
-import Dashboard.NodoCola;
 import Menu_Principal.ListaEnlazada;
 import Menu_Principal.Nodo;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
