@@ -22,6 +22,7 @@ public class FrmDashboard extends javax.swing.JFrame {
     PilaHistorial historial;
 
     public FrmDashboard() {
+        
         initComponents();
         iconos.IconosCargador ic = new IconosCargador();
         setLocationRelativeTo(null);

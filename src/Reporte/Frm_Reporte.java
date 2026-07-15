@@ -500,6 +500,7 @@ public class Frm_Reporte extends javax.swing.JFrame {
     private void btnExportarPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarPdfActionPerformed
 
         JFileChooser selector = new JFileChooser();
+        
         selector.setDialogTitle("Guardar PDF");
 
         int opcion = selector.showSaveDialog(this);

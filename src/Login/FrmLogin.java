@@ -331,7 +331,8 @@ public class FrmLogin extends javax.swing.JFrame {
 
         String usuariox = txtUsuario.getText();
         String contraseñax = String.valueOf(txtContraseña.getPassword());
-
+        
+        
         String rol = Autenticacion.validar(usuariox, contraseñax);
 
         if (rol.equals("ADMIN")) {
